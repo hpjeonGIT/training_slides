@@ -114,5 +114,8 @@ for seg, n in zip(next,range(len(next))):
 - ksh rpm must be installed
 - On a serial file system. Unpacking on Lustre could be an issue - media check fails.
 
-
+# Section defintion for 2D
+- Do not use generalized plane strain. This may yield an error of node set assembly not defined
+- Use Homogeneous and select 2D in the option
+	- Thickness can be adjusted in the option
  
