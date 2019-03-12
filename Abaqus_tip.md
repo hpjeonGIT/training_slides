@@ -119,3 +119,6 @@ for seg, n in zip(next,range(len(next))):
 - Use Homogeneous and select 2D in the option
 	- Thickness can be adjusted in the option
  
+ # Environmental variables
+ - abaqus information=environment # displays current configuration
+ - Ex) export ABA_SINT_CAP=65536
