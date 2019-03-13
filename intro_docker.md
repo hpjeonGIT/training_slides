@@ -24,3 +24,17 @@
    - docker images -q --filter "dangling=true" | xargs docker rmi
 - remove stopped containers
    - docker rm `docker ps --no-trunc -aq`
+- Making a new image
+   - Prepare Dockerfile, requirements.txt, app.py
+   - sudo docker build --tag=friendlyhello .
+    - sudo docker image ls
+    - sudo docker run -p 4000:80 friendlyhello # interactive run. ctrl-c to kill
+    - sudo docker run -d -p 4000:80 friendlyhello # background run. 
+    - sudo docker container stop 06a366bf5d47 # hash code is the one running as background. Find it through following commands
+      - sudo docker container ls
+      - sudo docker image ls
+   - sudo docker login # user account is made at https://hub.docker.com/
+   - sudo docker tag friendlyhello hpjeondocker/friendlytutorial:0312
+   - sudo push hpjeondocker/friendlytutorial:tag_name
+   - sudo docker push hpjeondocker/friendlytutorial:tag_name
+ 
