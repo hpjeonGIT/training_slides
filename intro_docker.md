@@ -18,9 +18,9 @@
 - sudo docker run hello-world
 - sudo docker image ls # show local docker images
 - image vs container: https://stackoverflow.com/questions/23735149/what-is-the-difference-between-a-docker-image-and-a-container
- - image: recipe
- - container: cake
+   - image: recipe
+   - container: cake
 - remove all untagged images
- - docker images -q --filter "dangling=true" | xargs docker rmi
+   - docker images -q --filter "dangling=true" | xargs docker rmi
 - remove stopped containers
- - docker rm `docker ps --no-trunc -aq`
+   - docker rm `docker ps --no-trunc -aq`
