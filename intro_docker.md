@@ -38,3 +38,8 @@
    - sudo push hpjeondocker/friendlytutorial:tag_name
    - sudo docker push hpjeondocker/friendlytutorial:tag_name
  
+ # Ubuntu image on CentOS
+ - Which kernel do I use ? -> CentOS
+ - Then how Ubuntu image works? -> filesystem
+ - Ref: https://stackoverflow.com/questions/33112137/run-different-linux-os-in-docker-container
+ 
