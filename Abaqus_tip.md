@@ -122,3 +122,15 @@ for seg, n in zip(next,range(len(next))):
  # Environmental variables
  - abaqus information=environment # displays current configuration
  - Ex) export ABA_SINT_CAP=65536
+
+# Feeding hostnames
+- In Abaqus 2017 or newer, $PBS_NODEFILE seems to be recognized while 6.14-* may have issues.
+- Ref: https://hpc.utm.my/index.php/services/available-software/abaqus/
+- Prepare abaqus_v6.env in the CWD, containing "mp_host_list=[['aaa.server.com',8],['bbb.server.com',8]]
+```bash
+for n in $(sort -u $PBS_NODEFILE); do
+mp_host_list="${mp_host_list}['$n',$(grep -c $n $PBS_NODEFILE)],"
+done
+mp_host_list=$(echo ${mp_host_list} | sed -e "s/,$/]/")
+echo "mp_host_list=[${mp_host_list}" > abaqus_v6.env
+```
