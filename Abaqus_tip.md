@@ -50,7 +50,7 @@
 
 # Parallel computing in abaqus
 - abaqus j=input cpus=4 mp_mode=threads (or MPI)
-  - MPI runs only on iterative solver
+  - MPI runs only on iterative solver. Edit #step as #step, solver=iterative
 
 # GPU run
 - abaqus j=test gpus=1
