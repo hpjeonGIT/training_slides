@@ -1,8 +1,31 @@
-## Control the number of threads
-- OMP_NUM_THREADS might be ignored
-- maxNumCompThreads will be deprecated in future release
-- feature('numThreads',str2num(getenv('OMP_NUM_THREADS')))
-- or  feature('numThreads',6)
+## Adjusting the number of threads
+- In matlab CLI >>> feature('numThreads',6)
+	- or maxNumCompThreads(6) may work
+- If you want to use OMP_NUM_THREADS from the system variable, then >>> feature('numThreads',str2num(getenv('OMP_NUM_THREADS')))
+	- If you want to use hybrid parallel computing with par-for, feature() must be done per workersCompThreads(). See below
+```
+parpool(npool)
+a = zeros(nloop);
+parfor i = 1:nloop
+    workersCompThreads(i) = feature('numThreads',nthreads);
+    a(i) = max(abs(eig(rand(nsize))));
+end
+sum(a)
+poolobj = gcp('nocreate');
+delete(poolobj);
+```
+or
+```
+parpool(npool)
+a = zeros(nloop);
+parfor i = 1:nloop
+    maxNumCompThreads(nthreads);
+    workersCompThreads(i) = maxNumCompThreads;
+    a(i) = max(abs(eig(rand(nsize))));
+end
+poolobj = gcp('nocreate');
+delete(poolobj);
+```
 - matlab -singleCompThread will enforce to use one thread / one core only
 
 ## Checking License status
@@ -35,9 +58,9 @@
 ## Introduction to MATLAB standalone applications
 ### What is a stand-alone application?
 - Your MATLAB script or program can be compiled using MATLAB compiler, running stand-alone - without MATLAB
-	- This stand-alone requires MATLAB runtime library, which is free
-	- No license required
-	- Highly recommended for parametric study
+    - This stand-alone requires MATLAB runtime library, which is free
+    - No license required
+    - Highly recommended for parametric study
 - You can save licenses of MATLAB and toolboxes
 - Stand-alone application might be faster than running from MATLAB platform
 
@@ -63,10 +86,11 @@ line = fgetl(fid);line = fgetl(fid);nloop = str2num(line)
 line = fgetl(fid);line = fgetl(fid);nthreads = str2num(line)
 line = fgetl(fid);line = fgetl(fid);nsize = str2num(line)
 fclose(fid);
-feature('numThreads',nthreads)
+%feature('numThreads',nthreads)
 parpool(npool)
 a = zeros(nloop);
 parfor i = 1:nloop
+    workersCompThreads(i) = feature('numThreads',nthreads);
     a(i) = max(abs(eig(rand(nsize))));
 end
 sum(a)
@@ -76,22 +100,21 @@ toc
 ```
 - This MATLAB scripts will execute eigen solver as many as nloop is required (dumb test). nloop is divided by par-for loop and each par-for loop will use nthreads for parallel eigen solver
 - Steps to produce stand-alone application
-	- Linux CLI
-		- module load matlab
-		- mcc -m run_test.m # this may take 1-2 min
-			- Produces mccExcludedFiles.log, requiredMCRProducts.txt, run_run_test.sh,readme.txt,run_test
-			- Distribute *run_run_test.sh* and *run_test binary* file
-			- input.txt will be necessary to control inputs
-	- MATLAB GUI
-		- module load matlab
-		- matlab
-		- Run "deploytool" from MATLAB command line, and select Application Compiler
-        - Select or include source files
-        - Click Package
-        - It may take a couple of minutes ...
-        - Completed
+    - Linux CLI
+    	- module load matlab
+	- mcc -m run_test.m # this may take 1-2 min
+	    - Produces mccExcludedFiles.log, requiredMCRProducts.txt, run_run_test.sh,readme.txt,run_test
+	    - Distribute *run_run_test.sh* and *run_test binary* file
+	    - input.txt will be necessary to control inputs
+    - MATLAB GUI
+    	- module load matlab
+	- matlab
+	- Run "deploytool" from MATLAB command line, and select Application Compiler
+    	- Select or include source files
+    	- Click Package
+	- It may take a couple of minutes ...
         - Will produce 3 folders as 
-        	- 1) for_redistribution: Installer enclosed
+	    - 1) for_redistribution: Installer enclosed
             - 2) for_redistribution_files_only: Executables and script. You may use as it is
             - 3) for_testing: might be slower than for_redistribution
 		- ~~External files to be parsed in the matlab app are automatically included in the stand-alone application compilation~~
@@ -100,14 +123,14 @@ toc
 
 ## Running MATLAB stand alone applications
 - Command: 
-	- *stand_alone_app.sh MATLAB_Runtime/vXX*
-		- The version of MATLAB Runtime must match with the MATLAB which produced the stand-alone application
-	- Sample command: *./run_run_test.sh /usr/local/matlab/MATLAB_Runtime/v95*
+    - *stand_alone_app.sh MATLAB_Runtime/vXX*
+    	- The version of MATLAB Runtime must match with the MATLAB which produced the stand-alone application
+    - Sample command: *./run_run_test.sh /usr/local/matlab/MATLAB_Runtime/v95*
 - Scratch space
-	- A stand-alone application produces scratch files and appropriate adjustment is necessary for file IO and cleaning
-	- Ref: https://www.mathworks.com/help/compiler_sdk/ml_code/mcr-component-cache-and-ctf-archive-embedding.html
-	- Default MCR cache folder is located in $HOME/.mcrcache
-    	- This could be a trouble when multiple stand-alone applications run. Use different MCR_CACHE_ROOT per PBS job
+    - A stand-alone application produces scratch files and appropriate adjustment is necessary for file IO and cleaning
+    - Ref: https://www.mathworks.com/help/compiler_sdk/ml_code/mcr-component-cache-and-ctf-archive-embedding.html
+    - Default MCR cache folder is located in $HOME/.mcrcache
+    - This could be a trouble when multiple stand-alone applications run. Use different MCR_CACHE_ROOT per PBS job
     	- Ex: *export MCR_CACHE_ROOT=/scratch/foo/tmp*
 ```bash
 #!/bin/bash
