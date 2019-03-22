@@ -31,6 +31,7 @@
 - matlab -softwareopengl
 
 <hr>
+
 ## Introduction to MATLAB standalone applications
 ### What is a stand-alone application?
 - Your MATLAB script or program can be compiled using MATLAB compiler, running stand-alone - without MATLAB
