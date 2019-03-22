@@ -27,6 +27,10 @@
   - mex -setup
   - deploytool
 
+## When graphics crashes due to opengl
+- matlab -softwareopengl
+
+
 ## MATLAB standalone applications
 - Instead of hard-coding basic parameters inside of the code, let matlab scripts read (fscanf) any external text file, enabling easy adjustment
 - Conversion
@@ -44,5 +48,3 @@
   - In PBS script: SCRATCH_DIR=$WORK/$PBS_JOBID; mkdir $SCRATCH_DIR; export MCR_CACHE_ROOT=$SCRATCH_DIR ; 
   - Default MCR cache folder is located in $HOME/.mcrcache
 
-## When graphics crashes due to opengl
-- matlab -softwareopengl
