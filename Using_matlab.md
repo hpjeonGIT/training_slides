@@ -101,7 +101,7 @@ toc
 - This MATLAB scripts will execute eigen solver as many as nloop is required (dumb test). nloop is divided by par-for loop and each par-for loop will use nthreads for parallel eigen solver
 - Steps to produce stand-alone application
     - Linux CLI
-    	- module load matlab
+        - module load matlab
 	- mcc -m run_test.m # this may take 1-2 min
 	    - Produces mccExcludedFiles.log, requiredMCRProducts.txt, run_run_test.sh,readme.txt,run_test
 	    - Distribute *run_run_test.sh* and *run_test binary* file
