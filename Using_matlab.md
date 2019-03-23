@@ -1,8 +1,8 @@
 ## Adjusting the number of threads
 - In matlab CLI >>> feature('numThreads',6)
-	- or maxNumCompThreads(6) may work
+    - or maxNumCompThreads(6) may work
 - If you want to use OMP_NUM_THREADS from the system variable, then >>> feature('numThreads',str2num(getenv('OMP_NUM_THREADS')))
-	- If you want to use hybrid parallel computing with par-for, feature() must be done per workersCompThreads(). See below
+    - If you want to use hybrid parallel computing with par-for, feature() must be done per workersCompThreads(). See below
 ```
 parpool(npool)
 a = zeros(nloop);
@@ -44,11 +44,11 @@ delete(poolobj);
 
 # Making MATLAB code into DLL
 -Install Windows SDK
-  - May have to remove pre-installed VC++ 2010 redistribution
-  - http://www.mathworks.com/matlabcentral/answers/95039-why-does-the-sdk-7-1-installation-fail-with-an-installation-failed-message-on-my-windows-system
+    - May have to remove pre-installed VC++ 2010 redistribution
+    - http://www.mathworks.com/matlabcentral/answers/95039-why-does-the-sdk-7-1-installation-fail-with-an-installation-failed-message-on-my-windows-system
 - Run MATLAB
-  - mex -setup
-  - deploytool
+    - mex -setup
+    - deploytool
 
 ## When graphics crashes due to opengl
 - matlab -softwareopengl
@@ -102,21 +102,21 @@ toc
 - Steps to produce stand-alone application
     - Linux CLI
         - module load matlab
-	- mcc -m run_test.m # this may take 1-2 min
-	    - Produces mccExcludedFiles.log, requiredMCRProducts.txt, run_run_test.sh,readme.txt,run_test
-	    - Distribute *run_run_test.sh* and *run_test binary* file
-	    - input.txt will be necessary to control inputs
+	    - mcc -m run_test.m # this may take 1-2 min
+        - Produces mccExcludedFiles.log, requiredMCRProducts.txt, run_run_test.sh,readme.txt,run_test
+        - Distribute *run_run_test.sh* and *run_test binary* file
+        - input.txt will be necessary to control inputs
     - MATLAB GUI
-    	- module load matlab
-	- matlab
-	- Run "deploytool" from MATLAB command line, and select Application Compiler
+        - module load matlab
+        - matlab
+	    - Run "deploytool" from MATLAB command line, and select Application Compiler
     	- Select or include source files
     	- Click Package
-	- It may take a couple of minutes ...
-        - Will produce 3 folders as 
-	    - 1) for_redistribution: Installer enclosed
-            - 2) for_redistribution_files_only: Executables and script. You may use as it is
-            - 3) for_testing: might be slower than for_redistribution
+	    - It may take a couple of minutes ...
+            - Will produce 3 folders as 
+	            - 1) for_redistribution: Installer enclosed
+                - 2) for_redistribution_files_only: Executables and script. You may use as it is
+                - 3) for_testing: might be slower than for_redistribution
 		- ~~External files to be parsed in the matlab app are automatically included in the stand-alone application compilation~~
 		- ~~Even deleting the choice from the menu, it updates automatically anyway~~
 		- ~~Manually move such files from the folder temporarily~~
@@ -124,7 +124,7 @@ toc
 ## Running MATLAB stand alone applications
 - Command: 
     - *stand_alone_app.sh MATLAB_Runtime/vXX*
-    	- The version of MATLAB Runtime must match with the MATLAB which produced the stand-alone application
+        - The version of MATLAB Runtime must match with the MATLAB which produced the stand-alone application
     - Sample command: *./run_run_test.sh /usr/local/matlab/MATLAB_Runtime/v95*
 - Scratch space
     - A stand-alone application produces scratch files and appropriate adjustment is necessary for file IO and cleaning
