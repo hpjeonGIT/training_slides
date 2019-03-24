@@ -134,3 +134,7 @@ done
 mp_host_list=$(echo ${mp_host_list} | sed -e "s/,$/]/")
 echo "mp_host_list=[${mp_host_list}" > abaqus_v6.env
 ```
+
+# Python scripting
+- abaqus cae nogui=script.py
+- Doing re-partitions may decrease the performance. Draw segment-wise in CAD or sketch steps
