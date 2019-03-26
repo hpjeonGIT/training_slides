@@ -1,4 +1,4 @@
-! OpenMP
+# OpenMP
 - Introduction
 	- Multiple threading parallelism in CPU
 		- Only on a single node of SMP
@@ -108,7 +108,7 @@ void force_omp(particle *q)
 }
 ```
 
-! OpenACC
+# OpenACC
 - Introduction
 	- Assume that you use PGI compiler
 	- Developed for GPGPU computing
