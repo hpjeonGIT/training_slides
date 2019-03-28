@@ -190,3 +190,16 @@ tmp  <- mpi.allreduce(best$result, type=2, op="maxloc", comm=0)
 mpi.barrier(comm=0)
 mpi.quit()
 ```
+## Using R in jupyter-notebook
+-Add R into jupyter notebook
+	- install.packages(c('repr', 'IRdisplay', 'evaluate', 'crayon', 'pbdZMQ', 'devtools', 'uuid', 'digest'), dependencies=TRUE, lib="/usr/nic/R/3.5.1/lib64/R/library")
+	- devtools::install_github('IRkernel/IRkernel')
+	- IRkernel::installspec()
+	- This will make ir folder in /home/user/.local/share/jupyter/kernels. Then copy the ir folder into /share/python/3.6.6/share/jupyter/kernels/
+- Using KerasR
+	- install.packages('reticulate')
+	- library(reticulate)
+	- use_python("/share/python/3.6.6/bin/python3")
+	- install.packages('kerasR')
+- May provide  .Renviron at $HOME
+	- RETICULATE_PYTHON=/share/python/3.6.6/bin/python3
