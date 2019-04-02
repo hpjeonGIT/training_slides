@@ -138,3 +138,12 @@ echo "mp_host_list=[${mp_host_list}" > abaqus_v6.env
 # Python scripting
 - abaqus cae nogui=script.py
 - Doing re-partitions may decrease the performance. Draw segment-wise in CAD or sketch steps
+
+# RDMA error 
+- Error message: multiple pkey found in partition key table, please choose one via MPI_IB_PKEY
+- Or: MPI_Init: Can't initialize RDMA device
+- or: Cannot initialize RDMA protocol
+- Solution
+	- export MPI_IB_PKEY=0xffff
+	- For multiple nodes, hardcode *export MPI_IB_PKEY=0xffff* into .bashrc and .bash_profile
+	
