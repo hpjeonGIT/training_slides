@@ -106,6 +106,7 @@ for seg, n in zip(next,range(len(next))):
 ```
 
 # Installing Abaqus 2019
+- only ksh: bash/sh not working
 - The SIMUIA Established product installers aborts with an error message both in GUI and Command line (TUI) mode with the following error message:
 - ERROR: Cannot wait for process "/<Abaqus_Installer_directory_path>/AM_SIM_Abaqus_Extend.AllOS/1/inst/linux_a64/code/bin /DSYInsAppliGUI" "-CDpath" "/<Abaqus_Installer_directory_path>/AM_SIM_Abaqus_Extend.AllOS/1/"
 - Workaround: The workaround is to set the size of stack limit from unlimited to "10240".
