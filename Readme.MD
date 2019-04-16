@@ -5,7 +5,9 @@
 - Please check each page shown in the left for the details of each SW. This page describes common steps of running main applications.
 
 <hr>
+
 # Sample Linux command for industrial applications
+
 ## Ansys workbench
 - `runwb2`
 - `runwb2 -oglmesa` # using mesa as SW rendering
