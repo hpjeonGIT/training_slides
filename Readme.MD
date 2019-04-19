@@ -37,6 +37,12 @@
 		- Click Postprocessing tab -> Graphics zone -> Contours -> Select velocity or Pressure
 		- If OpenGL graphics crashes, use software rending as `fluent 3d -driver x11`
 
+## icemcfd
+- icemcfd -log aaa.log
+- For too small fonts in GUI: Ref: https://www.cfd-online.com/Forums/ansys-meshing/69295-icem-how-can-i-increase-size-letter.html
+	- Edit the line 34 of ansys_inc/v193/icemcfd/linux64_amd/lib/ai_env/techTK/layout.tcl
+	- From `set SmallScreen 0` to `set SmallScreen 1`
+	
 ## HFSS
 - GUI command: ansysedt
 		- It may take > 1 min for the first run
