@@ -15,6 +15,8 @@
 	- `export LD_LIBRARY_PATH+=/ansys_inc/v192/Framework/bin/Linux64/Mesa`
 	- `export LIBGL_ALWAYS_INDIRECT=1`
 	- `export LIBGL_ALWAYS_SOFTWARE=1`
+-License server/port is supplied from system variable
+	- In Windows, it is hard-coded in c:\Program Files\ANSYSInc\Shared Files\Licensing\ansyslmd.ini
 
 ## Ansys APDL/Launcher
 - Classical Ansys MECHANICAL APDL
