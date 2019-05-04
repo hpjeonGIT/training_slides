@@ -31,7 +31,7 @@ print(len(a_list),  time.time()-t0)
 ```
 t0 = time.time(); bf = df.id[df.x.gt(0.5)|df.y.gt(0.5)] ; print(len(bf), time.time() - t0)
 ```
-  - This one liner takes 0.0049 sec
+  - This one-liner takes 0.0049 sec
 - Explain why there is more than 1000 times speed difference
 
 # R
@@ -58,9 +58,7 @@ cat(Sys.time() - t0)
   - This takes 8.8 sec in i3 Ubuntu desktop
 - Now let's use vectorization
 ```R
-t0 <- Sys.time()
-id_b <- df$idx[df$x > 0.5 | df$y > 0.5]
-cat(Sys.time() - t0)
+t0 <- Sys.time(); id_b <- df$idx[df$x > 0.5 | df$y > 0.5]; cat(Sys.time() - t0)
 ```
-  - This one liner takes 0.0053 sec
+  - This one-liner takes 0.0053 sec
 - Explain why there is more than 1500 times speed difference
