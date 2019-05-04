@@ -62,3 +62,31 @@ t0 <- Sys.time(); id_b <- df$idx[df$x > 0.5 | df$y > 0.5]; cat(Sys.time() - t0)
 ```
   - This one-liner takes 0.0053 sec
 - Explain why there is more than 1500 times speed difference
+
+
+# MATLAB
+- Initialization
+```matlab
+N = 10000;
+idx = 1:N;
+idx = idx(randperm(length(idx)));
+x = rand(N,1);
+y = rand(N,1);
+```
+- Regular loop
+```matlab
+tic
+id_a = [];
+for i=1:N
+    if (x(i) > 0.5 | y(i) > 0.5)
+        id_a = [id_a;idx(i)];
+    end
+end
+toc
+```
+- Vectorization
+```matlab
+tic
+id_b = idx(x>0.5 | y> 0.5);
+toc
+```
