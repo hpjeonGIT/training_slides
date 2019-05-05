@@ -26,12 +26,12 @@ for i in range(len(df)):
 
 print(len(a_list),  time.time()-t0)
 ```
-  - This takes 2.29 sec in i3 Ubuntu desktop
+    - This takes 2.29 sec in i3 Ubuntu desktop
 - Now let's use Pythonic computing or vectorization
 ```
 t0 = time.time(); bf = df.id[df.x.gt(0.5)|df.y.gt(0.5)] ; print(len(bf), time.time() - t0)
 ```
-  - This one-liner takes 0.0049 sec
+    - This one-liner takes 0.0049 sec
 - Explain why there is more than 1000 times speed difference
 
 # R
@@ -55,19 +55,19 @@ for (n in 1:dim(df)[1]) {
 }
 cat(Sys.time() - t0)
 ```
-  - This takes 8.8 sec in i3 Ubuntu desktop
+    - This takes 8.8 sec in i3 Ubuntu desktop
 - Now let's use vectorization
 ```R
 t0 <- Sys.time(); id_b <- df$idx[df$x > 0.5 | df$y > 0.5]; cat(Sys.time() - t0)
 ```
-  - This one-liner takes 0.0053 sec
+    - This one-liner takes 0.0053 sec
 - Explain why there is more than 1500 times speed difference
 
 
-# MATLAB
+# MATLAB/Octave
 - Initialization
 ```matlab
-N = 10000;
+N = 100000;
 idx = 1:N;
 idx = idx(randperm(length(idx)));
 x = rand(N,1);
@@ -78,15 +78,17 @@ y = rand(N,1);
 tic
 id_a = [];
 for i=1:N
-    if (x(i) > 0.5 | y(i) > 0.5)
+    if (x(i) > 0.5 || y(i) > 0.5)
         id_a = [id_a;idx(i)];
     end
 end
 toc
 ```
+    - Takes 2.06 sec in i3 ubuntu desktop + Octave 4.0.0
 - Vectorization
 ```matlab
 tic
 id_b = idx(x>0.5 | y> 0.5);
 toc
 ```
+    - Takes 0.004 sec in i3 Ubuntu desktop + Octave 4.0.0
