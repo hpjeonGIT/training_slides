@@ -148,3 +148,26 @@ echo "mp_host_list=[${mp_host_list}" > abaqus_v6.env
 	- export MPI_IB_PKEY=0xffff
 	- For multiple nodes, hardcode *export MPI_IB_PKEY=0xffff* into .bashrc and .bash_profile
 	
+# Plotting data along path
+- Extracting nodal number in sequene of 5,3,2 ... might not be easy
+- Draw a line segment in advance, and pick up points, which exist already
+```python
+key_list = output.rootAssembly.nodeSets.keys()
+if 'Some Edges' in key_list:
+    path1 = session.Path(name='Path-1', type=POINT_LIST,
+                 expression=((0,1.1,0), (0,-1.1,0)))
+    session.viewports['Viewport: 1'].odbDisplay.setPrimaryVariable(
+        variableLabel='S', outputPosition=INTEGRATION_POINT, 
+        refinement=(INVARIANT, 'Pressure'))
+    session.viewports['Viewport: 1'].odbDisplay.setFrame(step=0, frame=1) # first step is 0, second step is 1
+    v1 = (('S', INTEGRATION_POINT, ((INVARIANT, 'Pressure' ), )),) 
+    newXYData=session.XYDataFromPath(name='sectiondata',
+                                     path=path1,\
+                                     includeIntersections=TRUE,\
+                                     shape=UNDEFORMED,\
+                                     labelType=Y_COORDINATE,
+                                     pathStyle=UNIFORM_SPACING,
+                                     numIntervals=200,
+                                     variable=v1)
+    session.writeXYReport(fileName="section_pressure.txt", xyData=(newXYData,))
+```
