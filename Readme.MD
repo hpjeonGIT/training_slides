@@ -71,6 +71,10 @@
 		- Batch command using 1 cpu
 	- `comsol`
 		- GUI. Open aaa.mph and check Results -> Temperature
+	- `comsol -nn 1 -np 4`
+		- Opens GUI with 4 cpu for multi-prcoessing
+	- `comsol -nn 1 -np 4 -3drend sw`
+		- Opens GUI with 4 cpus parallel computing and SW rendering for visualization
 
 ## MATLAB
 - Run `matlab` and check the GUI opens or not
