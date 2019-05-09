@@ -92,3 +92,7 @@
 - If HW rendering fails, SW rendering can be used with -mesa
 	- `tec360 -mesa`
 	- Note that SW rendering is much slower than HW rendering
+
+# When license server connection takes too long (in Windows)
+- Add new system variable FLEXLM_TIMEOUT as 3 million ( or 1 million) as 3 sec in windows laptop
+- This will be enough for time delay to connect to license server through VPN
