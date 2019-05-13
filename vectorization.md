@@ -33,7 +33,10 @@ t0 = time.time(); bf = df.id[df.x.gt(0.5)|df.y.gt(0.5)] ; print(len(bf), time.ti
 ```
     - This one-liner takes 0.0049 sec
 - Explain why there is more than 1000 times speed difference
-
+    - Missing opportunities by unpredictable branches in cache memory
+    - Overhead of append operation
+    - Ref: https://stackoverflow.com/questions/16699247/what-is-a-cache-friendly-code
+    
 # R
 - Preparation of testing data. Random data of product id and property x/y
 ```R
