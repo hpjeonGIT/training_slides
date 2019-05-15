@@ -6,6 +6,8 @@
 - How to use
   - ifort –mkl=sequential …
   - icc –mkl=parallel …
+  - mpiicc -mkl=cluster ... for distributed computing like scalapack
+  - mpiifort -mkl=cluster ... for distributed computing like scalapack
 
 # Matrix solver
 - Solve A*B=C
