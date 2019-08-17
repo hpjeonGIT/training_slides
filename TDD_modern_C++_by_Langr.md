@@ -28,3 +28,17 @@ target_link_libraries(testx gmock)
 target_link_libraries(testx pthread)
 ```
 or `target_link_libraries(testx gtest gmock pthread)`
+
+- Sample CMakeLists.txt
+```
+project(chapterFirstExample)
+cmake_minimum_required(VERSION 2.6)
+include_directories($ENV{GMOCK_HOME}/include $ENV{GMOCK_HOME}/gtest/include)
+link_directories($ENV{GMOCK_HOME}/lib $ENV{GMOCK_HOME}/gtest/mybuild)
+add_definitions(-std=c++0x)
+set(CMAKE_CXX_FLAGS "${CMAXE_CXX_FLAGS} -Wall -g ")
+set(sources    main.cpp    SoundexTest.cpp)
+add_executable(test ${sources})
+target_link_libraries(test gmock gtest pthread)
+```
+
