@@ -1,4 +1,3 @@
-- As the book is old, many features need updated. I keep some bookmarking here.
 - gmock is not supported anymore while googletest (https://github.com/google/googletest) might be used instead
   - mkdir buld; cd build; cmake ..; make ; make install
 
