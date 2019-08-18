@@ -46,4 +46,12 @@ target_link_libraries(test gmock gtest pthread)
   - Public functions can be called from other classes or routines
   - Private functions can be called within the its own class
   
+- Inherit class
+  `class SoundexEncoding: public testing::test`
+  
+- In gtest, TEST() vs. TEST_F()
+  - TEST(TestSuiteName,TestName): TestSuiteName & TestName are for post-processing. Just dummy. No data
+  - TEST_F(TestFixtureName, TestName): TestFixtureName must be defined as a class, inheriting testing::Test
+  
+
   
