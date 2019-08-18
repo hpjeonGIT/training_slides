@@ -52,6 +52,6 @@ target_link_libraries(test gmock gtest pthread)
 - In gtest, TEST() vs. TEST_F()
   - TEST(TestSuiteName,TestName): TestSuiteName & TestName are for post-processing. Just dummy. No data
   - TEST_F(TestFixtureName, TestName): TestFixtureName must be defined as a class, inheriting testing::Test
-  
+  - Fixture can help to abstract code. Data structures can be defined/handled within TestFixtureName class, without declaring them in each TEST_F call. Therefore, when there are many TEST_F with similar data structure, Fixture can be beneficial in reducing code lines
 
   
