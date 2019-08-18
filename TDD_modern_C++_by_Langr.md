@@ -42,3 +42,8 @@ add_executable(test ${sources})
 target_link_libraries(test gmock gtest pthread)
 ```
 
+- prviate vs. public functions in Class
+  - Public functions can be called from other classes or routines
+  - Private functions can be called within the its own class
+  
+  
