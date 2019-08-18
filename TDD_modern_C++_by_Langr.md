@@ -57,3 +57,17 @@ target_link_libraries(test gmock gtest pthread)
 - Rule of Thumb
   - One ASSERT_THAT() per ONE TEST or TEST_F. ASSERT_THAT() yields FATAL failure - exits the TEST_F() even though there might be untested parts.
   - EXPECT_THAT() can be called multiple times. It yields NON-FATAL failure. Even after failure, TEST_F() continues to the next line.
+  
+- for loop in c++11
+```
+#include <string>
+#include <iostream>
+int main(int argc, char** argv){
+    std::string abc, xyz;
+    abc = "abcde";
+    for(auto letter: abc) std::cout << letter <<" "; // Iterates over abc. letter gets the each character
+    std::cout << std::endl;
+    return 0;
+}
+```
+
