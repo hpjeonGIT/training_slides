@@ -55,5 +55,5 @@ target_link_libraries(test gmock gtest pthread)
   - Fixture can help to abstract code. Data structures can be defined/handled within TestFixtureName class, without declaring them in each TEST_F call. Therefore, when there are many TEST_F with similar data structure, Fixture can be beneficial in reducing code lines
 
 - Rule of Thumb
-  - One ASSERT_THAT() per ONE TEST or TEST_F. ASSERT_THAT() yields FATAL failure
-  - EXPECT_THAT() can be called multiple times. It yields NON-FATAL failure
+  - One ASSERT_THAT() per ONE TEST or TEST_F. ASSERT_THAT() yields FATAL failure - exits the TEST_F() even though there might be untested parts.
+  - EXPECT_THAT() can be called multiple times. It yields NON-FATAL failure. Even after failure, TEST_F() continues to the next line.
