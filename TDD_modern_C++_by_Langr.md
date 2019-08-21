@@ -70,3 +70,14 @@ int main(int argc, char** argv){
 }
 ```
 
+- Initialization list: xm(mass) is not an array. xm initial value is declared as `mass`
+```
+class Particle {
+public:
+  double xx[3], vv[3], ff[3], xm;
+  Particle(): xm(mass) {
+  }
+  ~Particle() {
+  }
+};
+```
