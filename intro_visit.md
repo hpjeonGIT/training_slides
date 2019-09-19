@@ -64,6 +64,14 @@
 - Run as *visit -cli -nowin -s test.py*
 - http://www.visitusers.org/index.php?title=VisIt-tutorial-Python-scripting
 
+## Visualizing processor ID when MPI is running
+- How to display procid
+- Menu -> Controls -> Launch CLI
+	- In the CLI, Enter:
+	- `DefineScalarExpression(“procid”, “procid(Mesh)”)`
+	- `Addplot(“Pseudocolor”, “procid”)`
+	- procid will be shown in Pseudocolor menu
+
 ## Distributed visualization of VisIt
 - Dynamic load balancing seems NOT working
 	- visit -allowdynamic
