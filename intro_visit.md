@@ -68,8 +68,8 @@
 - How to display procid
 - Menu -> Controls -> Launch CLI
 	- In the CLI, Enter:
-	- `DefineScalarExpression(“procid”, “procid(Mesh)”)`
-	- `Addplot(“Pseudocolor”, “procid”)`
+	- `DefineScalarExpression(“procid”, “procid(mesh)”)`
+	- ~~`Addplot(“Pseudocolor”, “procid”)`~~
 	- procid will be shown in Pseudocolor menu
 
 ## Distributed visualization of VisIt
