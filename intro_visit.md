@@ -76,6 +76,7 @@
 - Dynamic load balancing seems NOT working
 	- visit -allowdynamic
 - Static load balancing works but models must be partitioned in the beginning
+	- visit -lb-block; visit -lb-stride
 - There are two modes to run VisIt as parallel
 	- Using Host
 		- Local host or other nodes
