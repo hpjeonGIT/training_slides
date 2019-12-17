@@ -82,7 +82,7 @@
 - For larger MPI ranks, extra configuration might be necessary. Unless, amplxe-cl may hang
   - Ref: https://software.intel.com/en-us/forums/intel-clusters-and-hpc-technology/topic/816877
   - Intel MPI
-'''
+```
 export I_MPI_DAPL_UD_SEND_BUFFER_NUM=8208
 export I_MPI_DAPL_UD_RECV_BUFFER_NUM=8208
 export I_MPI_DAPL_UD_ACK_SEND_POOL_SIZE=8704
@@ -91,9 +91,9 @@ export I_MPI_DAPL_UD_RNDV_EP_NUM=2
 export I_MPI_DAPL_UD_REQ_EVD_SIZE=2000
 export I_MPI_DAPL_UD_MAX_MSG_SIZE=4096
 export I_MPI_DAPL_UD_DIRECT_COPY_THRESHOLD=2147483647
-'''
+```
   - OpenMPI
-'''
+```
 btl_max_send_size = 4096
 btl_usnic_eager_limit = 2147483647
 btl_usnic_rndv_eager_limit = 2147483647
@@ -102,7 +102,7 @@ btl_usnic_rd_num = 8208
 btl_usnic_prio_sd_num = 8704
 btl_usnic_prio_rd_num = 8704
 btl_usnic_pack_lazy_threshold = -1
-'''
+```
 
 
 
