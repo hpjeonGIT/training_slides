@@ -127,3 +127,9 @@ Some commands
 - Running ddt
     - ddt ./a.out
 
+# Using valgrind
+- memory leak check: mpirun -np 4 valgrind --quiet --tool=memcheck --leak-check=yes --leak-resolution=high --track-origins=yes -
+-show-reachable=yes --num-callers=50 ./a.out
+- massif for memory consumption: mpirun -np 4 valgrind --tool=massif  ./a.out
+	- This will produce massif.out.PID files. No MPI rank information
+	- May use massif-visualizer: https://milianw.de/tag/massif-visualizer
