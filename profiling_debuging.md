@@ -133,3 +133,7 @@ Some commands
 - massif for memory consumption: mpirun -np 4 valgrind --tool=massif  ./a.out
 	- This will produce massif.out.PID files. No MPI rank information
 	- May use massif-visualizer: https://milianw.de/tag/massif-visualizer
+	- In order to differentiate results with MPI ranks:
+		- OpenMPI: `mpirun -np $SLURM_NPROCS valgrind --tool=massif --massif-out-file=massif.%q{OMPI_COMM_WORLD_RANK}.out ./a.out`
+        - Mvapich2: `mpirun -np $SLURM_NPROCS valgrind --tool=massif --massif-out-file=massif.%q{MV2_COMM_WORLD_RANK}.out ./a.out`
+        - Intel MPI: `mpirun -np $SLURM_NPROCS valgrind --tool=massif --massif-out-file=massif.%q{PMI_RANK}.out ./a.out`
