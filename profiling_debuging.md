@@ -116,6 +116,8 @@ Some commands
     - mpifort –g hello_mpi.f90
 - Running gdb with mpi
     - mpirun –n 2 xterm –e gdb ./a.out
+- Batch run of gdb - might be useful when a crashing point is searched
+	- mpirun -np $SLURM_NPROCS gdb -ex=r --args $myEXE $arg1 $arg2 $arg3
 
 # How to use armforge ddt
 - Compile the source code with –g option
