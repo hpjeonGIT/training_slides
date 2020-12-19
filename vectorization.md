@@ -95,3 +95,24 @@ id_b = idx(x>0.5 | y> 0.5);
 toc
 ```
     - Takes 0.004 sec in i3 Ubuntu desktop + Octave 4.0.0
+
+# RUBY
+```
+N = 100000;
+x = Array.new(N){ rand() }; nil
+y = Array.new(N){ rand() }; nil
+idx = [*1..N]; nil
+
+start = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+$i = 0
+id_a = []
+begin
+  if x[$i] >0.5 or y[$i] > 0.5
+    id_a.append($i)
+  end
+    $i += 1;
+end until $i > N-1
+finish = Process.clock_gettime(Process::CLOCK_MONOTONIC)
+finish - start
+```
+- Took 0.012 sec. Ruby Array uses contiguous memor and avoids cache idling with loop
