@@ -89,3 +89,4 @@ $ more ccc/ccc_0_0.vtu
  </Server>
 </Servers>
 ```
+- Submit a batch script running mpirun -np $SLURM_NPROCS pvserver
