@@ -77,11 +77,12 @@ $ more ccc/ccc_0_0.vtu
 
 ## Batch/distributed visualization
 - Not recommended but use it at your own risk
-	- VisIt would be recommended for batch distributed visualization
+  - VisIt would be recommended for batch distributed visualization
 - Recompilation of source might be necessary
 - Add server/connect allows only one node connection
 - For multiple nodes connection, write a pvsc file and “load servers”
-- Prepare .pvsc file and “load servers”
+  - Submit a batch script running mpirun -np $SLURM_NPROCS pvserver
+  - Prepare .pvsc file and add the name of computing nodes. Then “load servers”
 ```xml
 <Servers>
 <Server name="case1" resource="cs://server1.aaa.bbb//server2.ccc.ddd">
@@ -89,4 +90,14 @@ $ more ccc/ccc_0_0.vtu
  </Server>
 </Servers>
 ```
-- Submit a batch script running mpirun -np $SLURM_NPROCS pvserver
+  - Open a paraview from a separate terminal. When paraview is terminated or disconnects the computing node, the batch job will be terminated as well
+
+## Running mpi from GUI
+- Edit-> Setting -> adjust mpi rank number. Restart paraview
+- Now paraview will use multiple ranks
+- However, loading large scale models may trigger the violation of 32bit integer limit
+  - Visualizing small models might be beneficial
+  - For large scale models, use pvserver on localhost
+  - From a separate terminal, run mpirun -np 8 pvserver
+  - On Paraview GUI, connect server -> localhost
+    - Now large scale model can be visualized successfully
