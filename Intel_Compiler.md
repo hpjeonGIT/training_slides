@@ -50,3 +50,7 @@
 	- Again: Don't guess. MEASURE IT
 - Performance gain less than 30% would be errorneous or trivial
 - In order to find average wall time, repeat 5-10 times of run
+
+# Using preprocessor for icpc
+- icpc -E somesource.cpp > test.i
+- This may show what header files are missing
