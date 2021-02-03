@@ -139,3 +139,20 @@ Some commands
 		- OpenMPI: `mpirun -np $SLURM_NPROCS valgrind --tool=massif --massif-out-file=massif.%q{OMPI_COMM_WORLD_RANK}.out ./a.out`
         - Mvapich2: `mpirun -np $SLURM_NPROCS valgrind --tool=massif --massif-out-file=massif.%q{MV2_COMM_WORLD_RANK}.out ./a.out`
         - Intel MPI: `mpirun -np $SLURM_NPROCS valgrind --tool=massif --massif-out-file=massif.%q{PMI_RANK}.out ./a.out`
+- Suppressing message for valgrind
+	- Using external libraries or inevitable cases, we may suppress valgrind message or ask valgrind to skip them
+	- Ref:https://wiki.wxwidgets.org/Valgrind_Suppression_File_Howto
+	- Using `--gen-suppressions=all --log-file=suppression.log` will produce suppression.log containing like:
+```
+{
+   <insert_a_suppression_name_here>
+   Memcheck:Cond
+   fun:some_connection
+   obj:/opt/lib/knem.1.so
+   fun:mellanox
+}
+```
+	- Save them as a text file like `--suppressions=/home/myaccount/mylist.supp` will override valgrid message
+	- Wild card such as  `obj:/usr/*lib*/libX*` might be used
+	- `...` can be used to replace many lines
+	
