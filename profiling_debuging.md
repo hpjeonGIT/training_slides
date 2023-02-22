@@ -156,3 +156,22 @@ Some commands
 	- Wild card such as  `obj:/usr/*lib*/libX*` might be used
 	- `...` can be used to replace many lines
 	
+## Real time profiling of application
+- Basic idea is to run `free` at certain frequency
+- Sample script
+```bash
+#!/bin/sh
+while true
+do 
+  sleep 2 # every 2seconds
+  date >> free.log_`hostname`
+  free >> free.log_`hostname`
+done
+```
+- Run this script inside of batch script or interactive session
+```bash
+./monitor.sh&
+mpirun ./a.out
+```
+- Or job scheduler may support profiling
+  - In Slurm, `#SBATCH --profile=TASK`
