@@ -104,5 +104,8 @@ btl_usnic_prio_rd_num = 8704
 btl_usnic_pack_lazy_threshold = -1
 ```
 
-
+# Update since 2021
+- Now amplxe-cl command is replaced with vtune. For gui, use vtune-gui
+- When vtune crashes in the finalizing step, rerun as: `vtune -finalize -result-dir ./VT -search-dir /src/build/bin`
+  - search-dir will be the location of produced exe files containing src structures
 
