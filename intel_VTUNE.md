@@ -108,4 +108,5 @@ btl_usnic_pack_lazy_threshold = -1
 - Now amplxe-cl command is replaced with vtune. For gui, use vtune-gui
 - When vtune crashes in the finalizing step, rerun as: `vtune -finalize -result-dir ./VT -search-dir /src/build/bin`
   - search-dir will be the location of produced exe files containing src structures
-
+- If -collect hotspots takes too much memory, use -collect hpc-performance
+  - Ex: mpirun -np 20 vtune -collect hpc-performance -knob analyze-openmp=false -result-dir ./VT ../bin/a.exe 
